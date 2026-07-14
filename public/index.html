@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulsar · the internet, live</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔭</text></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+<canvas id="fx"></canvas>
+
+<div id="leftcol">
+<header id="hud" class="panel">
+  <h1>PULSAR</h1>
+  <div id="mode" class="live"><span class="dot"></span><span id="modeText">CONNECTING</span></div>
+  <div id="bigCount">0</div>
+  <div id="bigCountLabel">events witnessed this session</div>
+  <ul id="sources">
+    <li data-src="wiki"><i></i><b>Wikipedia</b><span class="rate">–</span><em class="st">connecting</em></li>
+    <li data-src="gh"><i></i><b>GitHub</b><span class="rate">–</span><em class="st">connecting</em></li>
+    <li data-src="hn"><i></i><b>Hacker News</b><span class="rate">–</span><em class="st">connecting</em></li>
+  </ul>
+  <div id="legend">each spark is one live event (a wiki edit, a commit, a comment) spiraling from its ring into the core</div>
+</header>
+
+<aside id="front" class="panel">
+  <h2>HN FRONT PAGE</h2>
+  <ol id="frontList"></ol>
+</aside>
+</div>
+
+<aside id="ticker" class="panel">
+  <h2>SIGNAL <button id="soundBtn" title="event sounds">🔇</button></h2>
+  <ul id="tickerList"></ul>
+</aside>
+
+<footer id="timebar" class="panel">
+  <div id="timeControls">
+    <button id="liveBtn" class="on">● LIVE</button>
+    <div id="speeds">
+      <button data-speed="1" class="on">1×</button>
+      <button data-speed="10">10×</button>
+      <button data-speed="60">60×</button>
+    </div>
+    <span id="cursorTime"></span>
+    <span id="timeHint">drag the timeline to travel</span>
+  </div>
+  <canvas id="timeline"></canvas>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "pulsar",
+  "version": "1.0.0",
+  "description": "The internet has a heartbeat. Real-time visualization of the GitHub, Wikipedia, and Hacker News event firehoses, with time travel.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "engines": {
+    "node": ">=23.4"
+  }
+}
