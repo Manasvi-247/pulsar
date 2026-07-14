@@ -1,0 +1,23 @@
+# Render Blueprint — deploys Pulsar as a free Node web service.
+# Spec: https://render.com/docs/blueprint-spec
+#
+# Free plan notes:
+#   - No persistent disk, so data/observatory.db is ephemeral: the 24h
+#     time-travel history resets on every restart/redeploy. Live view is fine.
+#   - The instance sleeps after ~15 min idle and cold-starts on the next visit.
+services:
+  - type: web
+    name: pulsar
+    runtime: node
+    plan: free
+    buildCommand: npm install     # zero deps — effectively a no-op, but Render expects a build step
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true              # redeploy on every push to the connected branch
+    envVars:
+      - key: NODE_VERSION
+        value: "24"               # needs >=23.4 for the stable node:sqlite module; bump to a full version (e.g. 24.4.0) if the build complains
+      # Optional: raises the GitHub poll rate from 60s to 15s.
+      # Uncomment, then set the actual value in the Render dashboard (sync:false keeps the secret out of git).
+      # - key: GITHUB_TOKEN
+      #   sync: false
